@@ -1,3 +1,5 @@
+
+'use client'
 import { Client, Account, ID } from "appwrite";
 import nextConfig from "./next.config.mjs";
 
@@ -10,7 +12,6 @@ export class AuthService {
             .setEndpoint(nextConfig.env.appwriteUrl)
             .setProject(nextConfig.env.appwriteProjectId);
         this.account = new Account(this.client);
-            
     }
 
     async createAccount({email, password, name}) {
