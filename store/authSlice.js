@@ -9,7 +9,7 @@ import { createSlice } from "@reduxjs/toolkit";
     },
     reducers : {
         login:(state,action)=>{
-            state.state = true
+            state.status = true
             state.userData = action.payload.userData
         },
         logout:(state)=>{
