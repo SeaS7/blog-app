@@ -1,5 +1,4 @@
 
-'use client'
 import { Client, Account, ID } from "appwrite";
 import nextConfig from "./next.config.mjs";
 

@@ -1,17 +1,15 @@
-"use client"
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Provider } from "react-redux";
-import { store } from "@/store/store";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import PageWrapper from "./PageWrapper";
+
+export const metadata = {
+  title: 'Blog App',
+  description: 'This a Blogging app',
+}
+
 
 export default function RootLayout({ children }) {
   return (
-    <Provider store={store}>
-      <html lang="en">
-      <body >{children}</body>
-    </html>
-    </Provider>
+    <PageWrapper children={children}/>
   );
 }

@@ -1,7 +1,7 @@
 "use client"
 import authService from '@/auth'
-import Footer from '@/components/Footer/Footer'
-import Header from '@/components/Header/Header'
+import { Footer, Header } from '@/components'
+import nextConfig from '@/next.config.mjs'
 import { login, logout } from '@/store/authSlice'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -18,7 +18,7 @@ const page = () => {
         if(userData){
           dispatch(login({userData}))
         }else{
-          dispatch(logout)
+          dispatch(logout())
         }
       }
     )
@@ -28,12 +28,12 @@ const page = () => {
       }
     )
   }, [])
-  
+
   return !loading ? (
     <>
-    <Header />
-    <div>page</div>
-    <Footer />
+      <Header />
+      <div>page</div>
+      <Footer />
     </>
   ):(null)
 }
