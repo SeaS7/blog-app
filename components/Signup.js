@@ -1,11 +1,12 @@
 "use client";
 import authService from "@/auth";
-import { login as authLogin } from "@/store/authSlice";
-import { useRouter } from "next/router";
-import React, { useReducer, useState } from "react";
+import { useRouter } from "next/navigation";
+import { login  } from "@/store/authSlice";
+import React, {  useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Button, Logo, Input } from "./index";
+import Link from "next/link";
 
 const Signup = () => {
   const [error, setError] = useState("");
@@ -18,8 +19,8 @@ const Signup = () => {
     try {
       const session = await authService.createAccount(data);
       if (session) {
-        const useData = await authService.getCurrentUser();
-        if (useData) dispatch(login(userData));
+        const userData = await authService.getCurrentUser();
+        if (userData) dispatch(login(userData));
         router.push("/");
       }
     } catch (error) {
@@ -42,7 +43,7 @@ const Signup = () => {
         <p className="mt-2 text-center text-base text-black/60">
           Already have an account?&nbsp;
           <Link
-            to="/login"
+            href="/login"
             className="font-medium text-primary transition-all duration-200 hover:underline"
           >
             Sign In

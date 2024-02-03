@@ -1,10 +1,10 @@
 "use client"
 import authService from '@/auth'
 import { Footer, Header } from '@/components'
-import nextConfig from '@/next.config.mjs'
 import { login, logout } from '@/store/authSlice'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import Home from './Home'
 
 
 const page = () => {
@@ -15,6 +15,7 @@ const page = () => {
     authService.getCurrentUser()
     .then(
       (userData)=>{
+        logout(userData)
         if(userData){
           dispatch(login({userData}))
         }else{
@@ -32,7 +33,7 @@ const page = () => {
   return !loading ? (
     <>
       <Header />
-      <div>page</div>
+        <Home />
       <Footer />
     </>
   ):(null)

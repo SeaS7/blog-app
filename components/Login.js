@@ -1,11 +1,12 @@
 "use client";
 import authService from "@/auth";
 import { login as authLogin } from "@/store/authSlice";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import {Button, Logo, Input} from "./index"
+import { Button, Logo, Input } from "./index";
+import Link from "next/link";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -27,8 +28,8 @@ const Login = () => {
     }
   };
 
-
   return (
+    
     <div className="flex items-center justify-center w-full">
       <div
         className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
@@ -44,7 +45,7 @@ const Login = () => {
         <p className="mt-2 text-center text-base text-black/60">
           Don&apos;t have any account?&nbsp;
           <Link
-            to="/signup"
+            href="/signup"
             className="font-medium text-primary transition-all duration-200 hover:underline"
           >
             Sign Up
